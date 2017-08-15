@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Add GPG key for the official Docker repository
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
