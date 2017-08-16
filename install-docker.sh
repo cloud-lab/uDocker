@@ -13,19 +13,20 @@ sudo apt-get update
 apt-cache policy docker-ce
 
 # Install Docker
-echo && echo
-echo "$(tput setaf 6) !! Docker installation will start in 10 seconds !! $(tput sgr0)"
+echo "$(tput setaf 6)"
+echo "!! Docker installation will start in 10 seconds !! $(tput sgr0)"
 sleep 10s
-sudo apt-get install -y docker-ce
+echo && sudo apt-get install -y docker-ce
 
 # Add user to Docker group
 sudo usermod -aG docker ${USER}
-echo && echo ${USER} is now added to below groups
-id -nG
 
-echo
-echo !! Docker installation finished. !!
-echo Enter below command to check Docker status
-echo "$(tput setaf 6)sudo systemctl status docker. $(tput sgr0)"
-echo
-
+echo && echo "$(tput setaf 6)!! Docker installation finished. !!$(tput sgr0)"
+echo && echo Type below command to check docker status:
+echo "$(tput setaf 6)sudo systemctl status docker$(tput sgr0)"
+echo && echo Type below commands to check user group:
+echo "$(tput setaf 6)su - ${USER}"
+echo "id -nG"
+echo "exit$(tput sgr0)"
+echo "## return to non-root user.."
+echo 
