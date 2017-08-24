@@ -11,9 +11,8 @@ if [ -z $new ] || [ $new -lt 1 ] || [ $new -gt 254 ] ; then
 
 new=$(echo $new | sed 's/^0*//')
 
-oldhost=$(cat /etc/hostname)
-oldip=$(cat /etc/network/interfaces | grep "iface enp0s3" -A 2 \
-      | grep address | awk '{ print $2 }')
+oldhost=$(hostname)
+oldip=$(ifconfig | grep enp0s3 -A 1 | grep inet | awk '{ print $2 }')
 
 newhost=$(echo $oldhost | cut -d- -f1)-$new
 newip=$(echo $oldip | cut -d. -f4 --complement).$new
