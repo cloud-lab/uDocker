@@ -14,7 +14,7 @@ if [ -z $new ] || [ $new -lt 1 ] || [ $new -gt 254 ] ; then
         exit 1; fi
 
 new=$(echo $new | sed 's/^0*//')
-intf=$(ifconfig | grep -m1 ^e | awk -F: '{print $1 }')
+intf=$(ifconfig | grep -m1 ^e | awk '{print $1 }')
 
 oldhost=$(hostname)
 oldip=$(ifconfig | grep $intf -A 1 | grep inet | awk '{ print $2 }')
