@@ -17,7 +17,7 @@ new=$(echo $new | sed 's/^0*//')
 intf=$(ifconfig | grep -m1 ^e | awk '{print $1 }')
 
 oldhost=$(hostname)
-oldip=$(ifconfig | grep $intf -A 1 | grep inet | awk '{ print $2 }')
+oldip=$(ifconfig | grep $intf -A 1 | grep inet | awk '{ print $2 }' | awk -F: '{ print $2 }')
 
 newhost=$(echo $oldhost | cut -d- -f1)-$new
 newip=$(echo $oldip | cut -d. -f4 --complement).$new
@@ -27,7 +27,7 @@ if [ ! -z $new ] ; then  newhost=$new-$(echo $newhost | cut -d- -f2) ; fi
 
 echo
 echo "$(tput setaf 6)!! Update node name from $oldhost to $newhost !!"
-echo "!! Update node name from $oldip to $newip !! $(tput sgr0)"
+echo "!! Update node IP from $oldip to $newip !! $(tput sgr0)"
 echo && echo System will restart in 10 seconds
 sleep 10
 
