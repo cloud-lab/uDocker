@@ -19,6 +19,7 @@ intf=$(ifconfig | grep -m1 ^e | awk '{print $1 }')
 oldhost=$(hostname)
 oldip=$(ifconfig | grep $intf -A 1 | grep inet | awk '{ print $2 }' | awk -F: '{ print $2 }')
 
+read -p "Change hostname? [enter] for no change: " newhost
 if [ -z $newhost ]
    then newhost=$(echo $oldhost | cut -d- -f1)-$new
    else newhost=$newhost-$new ; fi
