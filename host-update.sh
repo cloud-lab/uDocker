@@ -33,7 +33,8 @@ echo && echo System will restart in 10 seconds
 sleep 10
 
 sed -i "s/$oldhost/$newhost/" /etc/hostname
-sed -i "s/$oldhost/$newhost/" /etc/hosts
+sed -i "s/127.0.1.1/$oldip/" /etc/hosts
+sed -i -e "s/$oldip/$newip/" -e "s/$oldhost/$newhost/" /etc/hosts
 sed -i "s/$oldip/$newip/" /etc/network/interfaces
 
 echo Restarting ........
