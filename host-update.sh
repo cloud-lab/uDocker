@@ -4,7 +4,7 @@ if [ ! "${USER}" = "root" ] ; then
    echo -e "!! Enter $(tput setaf 1)sudo $0$(tput sgr0) to update !!"
    echo && exit 0 ; fi
    
-echo && read -p "Please enter host node number: " new
+echo && read -p "Please enter new host node number: " new
 
 if ! [ $new -eq $new ] 2>/dev/null ; then
         echo -e "$(tput setaf 1)!! Exit -- Sorry, integer only !!$(tput sgr0)"
